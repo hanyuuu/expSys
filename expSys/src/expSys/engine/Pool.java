@@ -2,6 +2,7 @@ package expSys.engine;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +19,34 @@ public class Pool {
 	private List<Characteristic> resultCharacteristics = new ArrayList<Characteristic>();
 	private List<Characteristic> conditions = new ArrayList<Characteristic>();
 	private List<String> opinionList = new ArrayList<String>();
+
+	public void fixDoubledElementsInLists() {
+		resultCharacteristics = new ArrayList<Characteristic>(new HashSet<>(resultCharacteristics));
+		transitionalCharacteristics = new ArrayList<Characteristic>(new HashSet<>(transitionalCharacteristics));
+		/*List<Characteristic> temporary = new ArrayList<Characteristic>();
+		for (Characteristic current : resultCharacteristics) {
+			for (Characteristic temporaryChar : temporary) {
+				if (!(current.compareTo(temporaryChar) == 0)) {
+					temporary.add(current);
+				}
+			}
+		}
+		
+		this.resultCharacteristics = temporary;
+		
+		temporary.clear();
+		
+		for (Characteristic current : transitionalCharacteristics) {
+			for (Characteristic temporaryChar : temporary) {
+				if (!(current.compareTo(temporaryChar) == 0)) {
+					temporary.add(current);
+				}
+			}
+		}
+		
+		this.transitionalCharacteristics = temporary;
+		temporary.clear();*/
+	}
 
 	public void deleteRule() {
 		if (!rules.isEmpty()) {
@@ -102,6 +131,7 @@ public class Pool {
 	}
 
 	public void printTraverseResults() {
+		this.fixDoubledElementsInLists();
 		System.out.println("Промежуточные:");
 		for (Characteristic transitional : transitionalCharacteristics) {
 			System.out.println(transitional.getParent().getName() + " = " + transitional.getName());
