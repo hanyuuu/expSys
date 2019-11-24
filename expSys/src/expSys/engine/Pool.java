@@ -23,29 +23,6 @@ public class Pool {
 	public void fixDoubledElementsInLists() {
 		resultCharacteristics = new ArrayList<Characteristic>(new HashSet<>(resultCharacteristics));
 		transitionalCharacteristics = new ArrayList<Characteristic>(new HashSet<>(transitionalCharacteristics));
-		/*List<Characteristic> temporary = new ArrayList<Characteristic>();
-		for (Characteristic current : resultCharacteristics) {
-			for (Characteristic temporaryChar : temporary) {
-				if (!(current.compareTo(temporaryChar) == 0)) {
-					temporary.add(current);
-				}
-			}
-		}
-		
-		this.resultCharacteristics = temporary;
-		
-		temporary.clear();
-		
-		for (Characteristic current : transitionalCharacteristics) {
-			for (Characteristic temporaryChar : temporary) {
-				if (!(current.compareTo(temporaryChar) == 0)) {
-					temporary.add(current);
-				}
-			}
-		}
-		
-		this.transitionalCharacteristics = temporary;
-		temporary.clear();*/
 	}
 
 	public void deleteRule() {
@@ -112,6 +89,7 @@ public class Pool {
 			returnMessage = (conditionIndex != -1) ? "Выбрано!" : "Произошла ошибка при выборе условия!";
 			System.out.println(returnMessage);
 			conditions.add(characteristics.get(conditionIndex));
+			conditions = new ArrayList<Characteristic>(new HashSet<>(conditions));
 			System.out.println("Текущие условия:");
 			for (Characteristic condition : conditions) {
 				System.out.println(condition.getParent().getName() + " = " + condition.getName());
