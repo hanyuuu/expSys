@@ -82,6 +82,9 @@ public class Pool {
 		}
 	}
 
+	/*public void fixDoubledElementsInCondition() {
+	}*/
+
 	public void addCondition() {
 		if (!characteristics.isEmpty()) {
 			String returnMessage = "";
@@ -89,13 +92,16 @@ public class Pool {
 			returnMessage = (conditionIndex != -1) ? "Выбрано!" : "Произошла ошибка при выборе условия!";
 			System.out.println(returnMessage);
 			conditions.add(characteristics.get(conditionIndex));
-			conditions = new ArrayList<Characteristic>(new HashSet<>(conditions));
-			System.out.println("Текущие условия:");
-			for (Characteristic condition : conditions) {
-				System.out.println(condition.getParent().getName() + " = " + condition.getName());
-			}
 		} else {
 			System.out.println("Добавьте хотя бы одну характеристику!");
+		}
+	}
+
+	public void printAllConditions() {
+		conditions = new ArrayList<Characteristic>(new HashSet<>(conditions));
+		System.out.println("Текущие условия:");
+		for (Characteristic condition : conditions) {
+			System.out.println(condition.getParent().getName() + " = " + condition.getName());
 		}
 	}
 

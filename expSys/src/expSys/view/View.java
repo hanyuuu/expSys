@@ -25,6 +25,7 @@ public class View {
 			System.out.println("~ 8. Получить результат            ~");
 			System.out.println("~ 9. Удалить условие               ~");
 			System.out.println("~ 10. Удалить правило              ~");
+			System.out.println("~ 11. Вывести все условия          ~");
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			try {
 				currentChoice = scanner.nextInt();
@@ -74,6 +75,8 @@ public class View {
 			case 10:
 				pool.deleteRule();
 				break;
+			case 11:
+				pool.printAllConditions();
 			}
 		}
 	}
